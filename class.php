@@ -1,50 +1,69 @@
-<!-- Oggi pomeriggio ripassate i primi concetti di classe, variabili e metodi d'istanza che abbiamo visto stamattina e create un file index.php in cui:
- - è definita una classe 'Movie'
-   => all'interno della classe sono dichiarate delle variabili d'istanza
-   => all'interno della classe è definito un costruttore
-   => all'interno della classe è definito almeno un metodo
-- vengono istanziati almeno due oggetti 'Movie' e stampati a schermo i valori delle relative proprietà
-Bonus 1:
-Modificare la classe Movie in modo che accetti piú di un genere.
-Bonus 2:
-Creare un layout completo per stampare a schermo una lista di movies.
-Facciamo attenzione all'organizzazione del codice, suddividendolo in appositi file e cartelle. Possiamo ad esempio organizzare il codice
-- creando un file dedicato ai dati (tipo le array di oggetti) che potremmo chiamare db.php
-- mettendo ciascuna classe nel proprio file e magari raggruppare tutte le classi in una cartella dedicata che possiamo chiamare Models/
-- organizzando il layout dividendo la struttura ed i contenuti in file e parziali dedicati. -->
-
-
-
 <?php
 
-    class Movie {
+class Movie
+{
 
-        public $title;
-        public $production;
-        public $duration;
-        public $genre;
-        public $oscar;
-        public $goldenGlobes;
-        public $prizes;
+    public $title;
+    public $production;
+    public $duration;
+    public $genre;
+    public $oscar;
+    public $goldenGlobes;
+    public $prizes;
 
-        function __construct($titolo, $produzione, $durata, $genere, $statuettaoro, $globo, $premiTotali) {
-            $this->title = $titolo;
-            $this->genre = $genere;
-            $this->production = $produzione;
-            $this->duration = $durata;
-            $this->oscar = $statuettaoro;
-            $this->goldenGlobes = $globo;
-            $this->prizes = $premiTotali;
-        }
-
+    function __construct($titolo, $produzione, $durata, Genere $genere, $statuettaoro, $globo)
+    {
+        $this->title = $titolo;
+        $this->genre = $genere;
+        $this->production = $produzione;
+        $this->duration = $durata;
+        $this->oscar = $statuettaoro;
+        $this->goldenGlobes = $globo;
+        $this->setPrizes();
     }
 
-    $rambo = new Movie();
+    public function setPrizes()
+    {
+        $this->prizes = intval($this->oscar) + intval($this->goldenGlobes);
+    }
+}
+class Genere
+{
+    public $genere1;
+    public $genere2;
+
+    function __construct($tipo1, $tipo2)
+    {
+        $this->genere1 = $tipo1;
+        $this->genere2 = $tipo2;
+    }
+}
+
+$generefilm1 = new Genere('Azione', 'Guerra');
+
+$generefilm2 = new Genere('Fantasy', 'Avventura');
+
+$rambo = new Movie('Rambo', 'Lions Gate Entertainment', '114', $generefilm1, 1, 2);
+
+$lordofthering = new Movie('The Lord of the ring', 'New Line Cinema', '221', $generefilm2, 4, 3,);
 
 
-    $lordofthering = new Movie();
-
-
+var_dump($lordofthering);
+var_dump($rambo);
 
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
