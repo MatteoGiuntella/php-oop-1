@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 $archivio = [
     [
         'title' => 'Rambo',
@@ -19,3 +20,4 @@ $archivio = [
         'goldenGlobes' => '3',
     ]
 ]; 
+?>

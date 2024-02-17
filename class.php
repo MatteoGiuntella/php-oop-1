@@ -1,5 +1,5 @@
 <?php
-
+header("Access-Control-Allow-Origin: *");
 class Movie
 {
 
@@ -64,3 +64,4 @@ class Movie
 
 // var_dump($lordofthering);
 // var_dump($rambo);
+?>
