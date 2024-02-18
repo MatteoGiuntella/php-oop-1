@@ -2,7 +2,6 @@
 require __DIR__ . '/class.php';
 $jsonarchivio = file_get_contents('./db.json');
 $archivio = json_decode($jsonarchivio, true);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +9,7 @@ $archivio = json_decode($jsonarchivio, true);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PHP OOP 1</title>
 </head>
 
 <body>
@@ -23,7 +22,6 @@ $archivio = json_decode($jsonarchivio, true);
         $statuettaoro = $archivio[$i]['oscar'];
         $globo = $archivio[$i]['goldenGlobes'];
         $movie[$i] = new Movie($titolo, $produzione, $durata, $genere, $statuettaoro, $globo)
-
     ?>
         <ul>
             <li>
